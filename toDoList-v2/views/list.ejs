@@ -1,0 +1,15 @@
+<%- include("header") -%>
+    <h1><%= listTitle %>!</h1>
+    <ul>
+      <% for(var i = 0; i<newListItems.length; i++){ %>
+            <li><%= newListItems[i] %></li>
+      <% } %>
+
+    </ul>
+
+    <form action="/" method="post">
+        <input type="text" name="newItem">
+        <button type="submit" name="list" autocomplete="off" value=<%= listTitle %>>추가</button>
+    </form>
+<%- include("footer") -%>
+
