@@ -1,0 +1,16 @@
+<%- include('partials/header.ejs') %>
+
+<h1>Compose</h1>
+
+<form action="/compose" method="post"> 
+    <label>Title</label>
+    <input name="postTitle">
+    <label>Post</label>
+    <textarea name="postBody"></textarea>
+    <button type="submit" name="button">전송</button>
+</form>
+
+
+<%- include('partials/footer.ejs') %>
+
+
