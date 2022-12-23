@@ -1,0 +1,14 @@
+API
+
+1. endpoint 끝점 URL주소 
+
+2. paths , parameters : 특정부분으로 범위를 좁히기 위한 경로와 매개변수
+
+3. authentication 인증, api을 요청할 때 개발자로 식별할 수 있어야 함.
+
+
+https://openweathermap.org/current 여기서 내 코드 만들어서 날씨정보 가져와보기.
+
+https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=aa63fb7e57433eb352bb91dfd92cdb2c&units=metric
+
+url에서 하기 힘드니까 postman 프로그램을 이용하면 좋다.

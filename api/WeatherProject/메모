@@ -1,0 +1,73 @@
+const express = require("express");
+const app = express();
+
+
+app.get("/", function(req,res){
+    res.send("Server is up and running");
+});
+
+
+
+app.listen(3000, function(){
+    console.log("server is running on port 3000");
+});
+
+
+1. npm init
+2. npm i express , npm i body-parser , npm i request 
+3. js 작성 후(위와 같이)
+4. nodemon 파일명.js
+5. 홈페이지 확인
+
+
+
+
+http 모듈
+
+200 정상작동
+404 서버 리소스 경로에 없을 때 오류
+401 ID인증 오류 
+
+https.get(url, function(response){
+    console.log(response.statusCode); //현재상태 200이면 정상작동
+
+    response.on("data", function(data){
+        //console.log(data); //16진수 코드
+        //json을 이용해서 -> 문자열 형식변환 -> js객체로 변환
+        const weatherData = JSON.parse(data); //압축된 json을 js로 풀었다.
+        //console.log(weatherData);
+        const object = {
+            name: "sevin",
+            favouriteFood: "Ramen"
+        }
+        JSON.stringify(object)   //js객체를 문자열로 변환 parse의 반대 
+        console.log(JSON.stringify(object));
+
+        const temp = weatherData.main.temp; //경로를 보고 그대로 써줌.크롬확장프로그램 쓰면 편함. 경로복붙
+
+    });
+
+});
+
+
+//아이콘 가져오기
+
+response.on("data", function(data){
+    const weatherData = JSON.parse(data); //압축된 json을 js로 풀었다.
+    const temp = weatherData.main.temp; 
+    const weatherdescription = weatherData.weather[0].description;
+    const icon = weatherData.weather[0].icon; //아이콘 경로가져옴
+    const imgUrl = "http://openweathermap.org/img/wn/" + icon +"@2x.png" // url설정
+
+    res.writeHead(200, {'Content-Type': 'text/html;charset=UTF-8'}); //utf-8을 쓴다는 걸 써줘야 한글이 안 깨짐.
+    res.write("<p>현재 날씨 상태는" + weatherdescription + "</p>");
+    res.write("<h1>런던의 온도는 " + temp + "도 입니다.</h1>");  //html태그도 넣을 수 있다.
+    res.write("<img src=" + imgUrl + ">"); 
+    res.send();
+});
+
+
+-------------------------------
+
+
+//npm i body-parser : 내가 볼 수 있게 해주는 패키지
